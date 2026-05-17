@@ -7,7 +7,7 @@ def mostrar_historico(historico):
         print("-", acao)
 
 
-#pra registrar as ações ??
+#pra registrar as ações e ir guardando 
 def registrar_acao(historico, acao):
 
     historico.append(acao)
