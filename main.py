@@ -17,7 +17,7 @@ historico = []
 
 #aí tem q mostrar a sua funçao de mostrar o estado 
 #msm coisa com outra função de mostrar o menu sla
-
+indice_dias = 0 #Quantos dias já se passaram 
 #pedir pro jogador
 opcao = input("Escolha uma opção: ")
 
