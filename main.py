@@ -1,5 +1,7 @@
 import estado_yasmin
 import historico_yasmin
+import anna_ritter
+import anna_ritter2
 
 #dicionário aí né
 estado = {
@@ -43,3 +45,9 @@ limitar_status(estado)
 verificar_estado(estado)
 mostrar_status(estado)
 mostrar_historico(historico)
+buscar_agua(estado)
+buscar_comida(estado)
+descansar(estado)
+mostrar_menu(opcoes)
+mostrar_status(estado)
+
