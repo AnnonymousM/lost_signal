@@ -11,15 +11,11 @@ estado = {
     "agua": 20,
     "sanidade": 60
 }
-
-#acho que tem um negócio de armazenar o histórico tbm, qualquer coisa se n precisar e for alucinação minha a gnt tira
 historico = []
 
-#aí tem q mostrar a sua funçao de mostrar o estado 
-#msm coisa com outra função de mostrar o menu sla
 indice_dias = 0 #Quantos dias já se passaram 
-#pedir pro jogador
-opcao = input("Escolha uma opção: ")
+
+mostrar_menu(indice_dias)
 
 
 #exemplo aqui de funções suas hipotéticas
@@ -40,6 +36,11 @@ elif opcao == "3":
 else:
     print("Opção inválida!")
 
+mostrar_texto(indice_dias)
+mostrar_status(estado)
+
+
+
 #aí aqui tem q ser tipo aquela parte q mostra as coisas lá, as suas funções são hipotéticas mas as minhas tão aí
 limitar_status(estado)
 verificar_estado(estado)
@@ -48,6 +49,6 @@ mostrar_historico(historico)
 buscar_agua(estado)
 buscar_comida(estado)
 descansar(estado)
-mostrar_menu(opcoes)
+mostrar_menu(indice_dias)
 mostrar_status(estado)
-
+mostrar_texto(indice_dias)
