@@ -1,3 +1,6 @@
+import estado_yasmin
+import historico_yasmin
+
 #dicionário aí né
 estado = {
     "saude": 100,
@@ -15,3 +18,28 @@ historico = []
 
 #pedir pro jogador
 opcao = input("Escolha uma opção: ")
+
+
+#exemplo aqui de funções suas hipotéticas
+#buscar_agua, buscar_comida, descansar
+
+if opcao == "1":
+    buscar_agua(estado) #aí toda vez que vc colocar sua função tem q usar a minha de registrar
+    registrar_acao(historico, "Buscou água")
+
+elif opcao == "2":
+    buscar_comida(estado)
+    registrar_acao(historico, "Buscou comida")
+
+elif opcao == "3":
+    descansar(estado)
+    registrar_acao(historico, "Descansou")
+
+else:
+    print("Opção inválida!")
+
+#aí aqui tem q ser tipo aquela parte q mostra as coisas lá, as suas funções são hipotéticas mas as minhas tão aí
+limitar_status(estado)
+verificar_estado(estado)
+mostrar_status(estado)
+mostrar_historico(historico)
