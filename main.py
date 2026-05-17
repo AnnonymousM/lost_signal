@@ -12,7 +12,6 @@ estado = {
     "sanidade": 60
 }
 
-#acho que tem um negócio de armazenar o histórico tbm, qualquer coisa se n precisar e for alucinação minha a gnt tira
 historico = []
 
 #aí tem q mostrar a sua funçao de mostrar o estado 
@@ -40,7 +39,7 @@ elif opcao == "3":
 else:
     print("Opção inválida!")
 
-#aí aqui tem q ser tipo aquela parte q mostra as coisas lá, as suas funções são hipotéticas mas as minhas tão aí
+#aí aqui tem q ser tipo aquela parte q mostra as coisas no fim de cada dia, como as escolhas que o player fez e quanto de cada coisa ainda tem
 limitar_status(estado)
 verificar_estado(estado)
 mostrar_status(estado)
