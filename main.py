@@ -1,9 +1,8 @@
-import estado_yasmin
-import historico_yasmin
-import anna_ritter
-import anna_ritter2
+from estado_yasmin import verificar_estado, limitar_status
+from historico_yasmin import mostrar_historico, registrar_acao
+from decisoes_anna import buscar_agua, buscar_comida, descansar
+from exibicao_anna import mostrar_menu, mostrar_status, mostrar_texto
 
-#dicionário aí né
 estado = {
     "saude": 100,
     "energia": 80,
@@ -15,11 +14,11 @@ historico = []
 
 indice_dias = 0 #Quantos dias já se passaram 
 
-mostrar_menu(indice_dias)
+mostrar_texto(indice_dias)
+
+opcao = mostrar_menu(indice_dias)
 
 
-#exemplo aqui de funções suas hipotéticas
-#buscar_agua, buscar_comida, descansar
 
 if opcao == "1":
     buscar_agua(estado) #aí toda vez que vc colocar sua função tem q usar a minha de registrar
