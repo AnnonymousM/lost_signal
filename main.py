@@ -1,7 +1,7 @@
 from estado_yasmin import verificar_estado, limitar_status
 from historico_yasmin import mostrar_historico, registrar_acao
 from decisoes_anna import buscar_agua, buscar_comida, descansar
-from exibicao_anna import mostrar_menu, mostrar_status, mostrar_texto
+from exibicao_anna import mostrar_menu, mostrar_status, mostrar_texto, verificar_final
 
 LIMITE_DIAS = 7 #aqui é uma constante que não vai mudar, por isso tá em maiúsculo
 
@@ -52,14 +52,14 @@ while indice_dias < LIMITE_DIAS:
         verificar_final(estado, sanidade_zerou)
         break
 
-    if resultado == "insano":
+    if estado == "insano":
         sanidade_zerou = True  #o jogo continua mas o player entra num estado insano
  
     indice_dias += 1
  
 else:
     #aqui é qnd já for os sete dias e ele estiver vivo
-    verificar_final(estado, sanidade_zerou)
+    resultado = verificar_estado(estado)
 
 
 limitar_status(estado)
