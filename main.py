@@ -3,6 +3,8 @@ from historico_yasmin import mostrar_historico, registrar_acao
 from decisoes_anna import buscar_agua, buscar_comida, descansar
 from exibicao_anna import mostrar_menu, mostrar_status, mostrar_texto
 
+LIMITE_DIAS = 7 #aqui é uma constante que não vai mudar, por isso tá em maiúsculo
+
 estado = {
     "saude": 100,
     "energia": 80,
@@ -11,33 +13,59 @@ estado = {
     "sanidade": 60
 }
 
-#acho que tem um negócio de armazenar o histórico tbm, qualquer coisa se n precisar e for alucinação minha a gnt tira
 historico = []
-
 indice_dias = 0 #Quantos dias já se passaram 
+sanidade_zerou = False #se a sanidade zerar alguma vez automaticamente é um final ruim
 
-mostrar_texto(indice_dias)
-
-opcao = mostrar_menu(indice_dias)
-
+#as coisas que tinham aqui eu coloquei dentro do while já q tem q ficar repetindo
 
 
-if opcao == "1":
-    buscar_agua(estado) #aí toda vez que vc colocar sua função tem q usar a minha de registrar
-    registrar_acao(historico, "Buscou água")
+while indice_dias < LIMITE_DIAS:
+    mostrar_texto(indice_dias)
+    mostrar_status(estado)
+ 
+    opcao = mostrar_menu(indice_dias)
+ 
+    if opcao == "1":
+        buscar_agua(estado)
+        registrar_acao(historico, "Buscou água")
+ 
+    elif opcao == "2":
+        buscar_comida(estado)
+        registrar_acao(historico, "Buscou comida")
+ 
+    elif opcao == "3":
+        descansar(estado)
+        registrar_acao(historico, "Descansou")
+ 
+    else:
+        print("Opção inválida! Tente novamente.")
+        continue  #aqui não vai avançar o dia se o q o player escolher for inválido
+ 
+    limitar_status(estado)
+ 
+    vivo = verificar_estado(estado)  #True se vivo, False se morreu
+ 
+    mostrar_historico(historico)
+ 
+    if not vivo:
+        print("\n Você não sobreviveu. GAME OVER.")
+        break
 
-elif opcao == "2":
-    buscar_comida(estado)
-    registrar_acao(historico, "Buscou comida")
-
-elif opcao == "3":
-    descansar(estado)
-    registrar_acao(historico, "Descansou")
-
+    if resultado == "insano":
+        sanidade_zerou = True  #o jogo continua mas o player entra num estado insano
+ 
+    indice_dias += 1
+ 
 else:
-    print("Opção inválida!")
+    #aqui é qnd já for os sete dias e ele estiver vivo
+     if sanidade_zerou:
+        print(f"\nVocê sobreviveu os {LIMITE_DIAS} dias... mas algo se perdeu no caminho.")
+        print("Você não tem mais certeza se foi realmente resgatado ou se tudo isso é apenas um delírio,\n pois mesmo de volta a civilização, as pessoas te olham de um jeito estranho e não interagem mais com você como antes. ")
+     else:
+        print(f"\n Eba você sobreviveu {LIMITE_DIAS} dias e foi resgatado!")
 
-#aí aqui tem q ser tipo aquela parte q mostra as coisas lá, as suas funções são hipotéticas mas as minhas tão aí
+
 limitar_status(estado)
 verificar_estado(estado)
 mostrar_status(estado)
