@@ -28,7 +28,7 @@ while indice_dias < LIMITE_DIAS:
  
     if opcao == "1":
         buscar_agua(estado)
-        registrar_acao(historico, "Buscou água")
+        registrar_acao(historico, "Você decide sair para buscar água e felizmente encontra um  riacho.")
  
     elif opcao == "2":
         buscar_comida(estado)
