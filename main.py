@@ -36,7 +36,7 @@ while indice_dias < LIMITE_DIAS:
  
     elif opcao == "3":
         descansar(estado)
-        registrar_acao(historico, "Descansou")
+        registrar_acao(historico, "Você está exausto e tira o dia para descansar.")
  
     else:
         print("Opção inválida! Tente novamente.")
@@ -49,7 +49,7 @@ while indice_dias < LIMITE_DIAS:
     mostrar_historico(historico)
  
     if not vivo:
-        print("\n Você não sobreviveu. GAME OVER.")
+        verificar_final(estado)
         break
 
     if resultado == "insano":
@@ -59,11 +59,7 @@ while indice_dias < LIMITE_DIAS:
  
 else:
     #aqui é qnd já for os sete dias e ele estiver vivo
-     if sanidade_zerou:
-        print(f"\nVocê sobreviveu os {LIMITE_DIAS} dias... mas algo se perdeu no caminho.")
-        print("Você não tem mais certeza se foi realmente resgatado ou se tudo isso é apenas um delírio,\n pois mesmo de volta a civilização, as pessoas te olham de um jeito estranho e não interagem mais com você como antes. ")
-     else:
-        print(f"\n Eba você sobreviveu {LIMITE_DIAS} dias e foi resgatado!")
+    verificar_final(estado)
 
 
 limitar_status(estado)
