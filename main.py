@@ -49,7 +49,7 @@ while indice_dias < LIMITE_DIAS:
     mostrar_historico(historico)
  
     if not vivo:
-        verificar_final(estado)
+        verificar_final(estado, sanidade_zerou)
         break
 
     if resultado == "insano":
@@ -59,7 +59,7 @@ while indice_dias < LIMITE_DIAS:
  
 else:
     #aqui é qnd já for os sete dias e ele estiver vivo
-    verificar_final(estado)
+    verificar_final(estado, sanidade_zerou)
 
 
 limitar_status(estado)
