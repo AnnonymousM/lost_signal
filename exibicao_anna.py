@@ -37,11 +37,7 @@ Mas cuidado! se você zerar energia, você desmaia e perde água e comida.
 Zerar água ou comida leva à morte.
 Zerar saúde, obviamente, leva à morte e sanidade... bem, quem sabe?
 """
-    atividades = (
-                  "Você decide sair para buscar água e felizmente encontra um  riacho.",
-                  "Você decide sair pra buscar comida e felizmente encontra algumas frutas",
-                  "Você está exausto e tira o dia para descansar."
-    )
+
 
     fim_do_dia = "Está escurecendo e parece que isso é tudo que você vai fazer por hoje."
 
@@ -54,7 +50,7 @@ Zerar saúde, obviamente, leva à morte e sanidade... bem, quem sabe?
         print(fim_do_dia)
 
 
-def verificar_final(estado):
+def verificar_final(estado,sanidade_zerou):
 
     textos = {
 
@@ -95,7 +91,7 @@ def verificar_final(estado):
     if estado["saude"] == 0:
         print(textos["morte por saúde"])
 
-    if estado["sanidade"] == 0 and indice_dias >= 7:
+    if sanidade_zerou == True and indice_dias >= 7:
         print(textos["final ruim"])
     else:
         print(textos["final bom"])
