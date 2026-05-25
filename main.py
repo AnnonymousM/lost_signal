@@ -32,7 +32,7 @@ while indice_dias < LIMITE_DIAS:
  
     elif opcao == "2":
         buscar_comida(estado)
-        registrar_acao(historico, "Buscou comida")
+        registrar_acao(historico, "Você decide sair pra buscar comida e felizmente encontra algumas frutas")
  
     elif opcao == "3":
         descansar(estado)
