@@ -13,16 +13,19 @@ estado = {
     "sanidade": 60
 }
 
+fim_de_jogo = False
 historico = []
 indice_dias = 0 #Quantos dias já se passaram 
 sanidade_zerou = False #se a sanidade zerar alguma vez automaticamente é um final ruim
+resultado = ""
 
 #as coisas que tinham aqui eu coloquei dentro do while já q tem q ficar repetindo
 
 
 while indice_dias < LIMITE_DIAS:
     mostrar_texto(indice_dias)
-    mostrar_status(estado)
+    if indice_dias > 0:
+        mostrar_status(estado)
  
     opcao = mostrar_menu(indice_dias)
  
@@ -45,21 +48,29 @@ while indice_dias < LIMITE_DIAS:
     limitar_status(estado)
  
     vivo = verificar_estado(estado)  #True se vivo, False se morreu
- 
-    mostrar_historico(historico)
- 
-    if not vivo:
-        verificar_final(estado, sanidade_zerou)
-        break
-
-    if estado == "insano":
+    
+    if estado["sanidade"] == 0:
+        resultado = "insano"
+    
+    if resultado == "insano":
         sanidade_zerou = True  #o jogo continua mas o player entra num estado insano
  
-    indice_dias += 1
+    if not vivo:
+        verificar_final(estado, sanidade_zerou, indice_dias)
+        mostrar_historico(historico)
+        fim_de_jogo = True
+        break
+
+    
  
-else:
+    indice_dias += 1
+
+if fim_de_jogo == False:
+ 
+
     #aqui é qnd já for os sete dias e ele estiver vivo
-    resultado = verificar_estado(estado)
+    verificar_final(estado, sanidade_zerou, indice_dias)
+    mostrar_historico(historico)
 
 
 limitar_status(estado)
