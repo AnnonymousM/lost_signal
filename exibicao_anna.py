@@ -37,8 +37,13 @@ Mas cuidado! se você zerar energia, você desmaia e perde água e comida.
 Zerar água ou comida leva à morte.
 Zerar saúde, obviamente, leva à morte e sanidade... bem, quem sabe?
 """
+    atividades = (
+                  "Você decide sair para buscar água e felizmente encontra um  riacho.",
+                  "Você decide sair pra buscar comida e felizmente encontra algumas frutas",
+                  "Você está exausto e tira o dia para descansar."
+    )
 
-    fim_do_dia = "Está escurecendo e parece que isso é tudo que você vai fazer."
+    fim_do_dia = "Está escurecendo e parece que isso é tudo que você vai fazer por hoje."
 
 
     if indice_dias == 0:
@@ -47,4 +52,56 @@ Zerar saúde, obviamente, leva à morte e sanidade... bem, quem sabe?
 
     else:
         print(fim_do_dia)
+
+
+def verificar_final(estado):
+
+    textos = {
+
+        "morte por saúde":
+        "Você se sente muito mal durante a noite; sua barriga dói muito e você está suando frio.\n"
+        "De repente, tudo fica escuro e você perde os sentidos. Dessa vez, você não acorda.\n"
+        "GAME OVER - Final: Doença letal",
+
+        "morte por desidratação":
+        "Você sente sua boca ressecar ao extremo, seus órgãos estão clamando por água, mas você não tem nenhuma.\n"
+        "Uma dor crescente se irradia por toda a sua cabeça, e você desmaia. Dessa vez, você não acorda.\n"
+        "GAME OVER - Final: desidratação",
+
+        "morte por fome":
+        "Você sente uma dor lancinante percorrendo seu estômago, quase como se ele tentasse se autodigerir.\n"
+        "A dor deixa seus pensamentos confusos e você aos poucos perde a noção do tempo e dos seus arredores.\n"
+        "Seus sentidos se esvaem e dessa vez, você não acorda.\n"
+        "GAME OVER - Final: inanição",
+
+        "final bom":
+        "Depois de colocar em prática todos os seus instintos de sobrevivência por 7 dias, a ajuda finalmente chega.\n"
+        "Você sobreviveu!\n"
+        "FINAL BOM - A esperança é a última que morre",
+
+        "final ruim":
+        "Seus dias nessa floresta cheia de horrores e perigos fazem com que você enlouqueça completamente.\n"
+        "A realidade se disfaz diante dos seus olhos.\n"
+        "Algumas pessoas te tiram daqui e resgatam o que sobrou de você.\n"
+        "FINAL RUIM - Eles não vão acreditar em você"
+    }
+
+    if estado["comida"] == 0:
+        print(textos["morte por fome"])
+
+    if estado["agua"] == 0:
+        print(textos["morte por desidratação"])
+
+    if estado["saude"] == 0:
+        print(textos["morte por saúde"])
+
+    if estado["sanidade"] == 0 and indice_dias >= 7:
+        print(textos["final ruim"])
+    else:
+        print(textos["final bom"])
+
+
+
+    
+    
 
