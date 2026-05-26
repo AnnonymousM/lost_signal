@@ -31,15 +31,15 @@ while indice_dias < LIMITE_DIAS:
  
     if opcao == "1":
         buscar_agua(estado)
-        registrar_acao(historico, "Você decide sair para buscar água e felizmente encontra um  riacho.")
+        registrar_acao(historico, "Você saiu pra buscar água.")
  
     elif opcao == "2":
         buscar_comida(estado)
-        registrar_acao(historico, "Você decide sair pra buscar comida e felizmente encontra algumas frutas")
+        registrar_acao(historico, "Você saiu pra buscar comida")
  
     elif opcao == "3":
         descansar(estado)
-        registrar_acao(historico, "Você está exausto e tira o dia para descansar.")
+        registrar_acao(historico, "Você tirou o dia pra descansar.")
  
     else:
         print("Opção inválida! Tente novamente.")
