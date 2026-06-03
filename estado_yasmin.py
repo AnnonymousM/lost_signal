@@ -3,15 +3,12 @@
 def verificar_estado(estado):
  
     if estado["saude"] <= 0:
-        print("\nVocê morreu.")
         return "morto"
  
     elif estado["energia"] <= 0:
-        print("\nVocê ficou sem energia.")
         return "morto"
  
     elif estado["sanidade"] <= 0:
-        print("\nVocê enlouqueceu.")
         return "insano"
  
     return "vivo"
