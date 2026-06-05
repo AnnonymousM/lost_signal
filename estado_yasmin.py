@@ -15,7 +15,7 @@ def verificar_estado(estado):
         return "insano"
  
     return "vivo"
-#mudei aqui pq eu descobri que desse jeito funciona igual só q fica menos verboso :)
+#não deixa os status passarem de 100 ou ficarem menos que 0
 def limitar_status(estado):
  
     for chave in ["energia", "comida", "agua", "saude", "sanidade"]:
