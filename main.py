@@ -4,6 +4,7 @@ from decisoes_anna import buscar_agua, buscar_comida, descansar
 from exibicao_anna import mostrar_menu, mostrar_status, mostrar_texto, verificar_final
 
 LIMITE_DIAS = 7 #aqui é uma constante que não vai mudar, por isso tá em maiúsculo
+acao_texto = ("Você saiu pra buscar água.", "Você saiu pra buscar comida", "Você tirou o dia pra descansar.")
 
 estado = {
     "saude": 100,
@@ -31,26 +32,25 @@ while indice_dias < LIMITE_DIAS:
  
     if opcao == "1":
         buscar_agua(estado)
-        registrar_acao(historico, "Você saiu pra buscar água.")
+        registrar_acao(historico, acao_texto[0])
  
     elif opcao == "2":
         buscar_comida(estado)
-        registrar_acao(historico, "Você saiu pra buscar comida")
+        registrar_acao(historico, acao_texto[1])
  
     elif opcao == "3":
         descansar(estado)
-        registrar_acao(historico, "Você tirou o dia pra descansar.")
+        registrar_acao(historico, acao_texto[2])
  
     else:
         print("Opção inválida! Tente novamente.")
         continue  #aqui não vai avançar o dia se o q o player escolher for inválido
  
     limitar_status(estado)
- 
-    vivo = verificar_estado(estado)  #True se vivo, False se morreu
+    mostrar_status(estado)
     
-    if estado["sanidade"] == 0:
-        resultado = "insano"
+    
+    resultado = verificar_estado(estado)
     
     if resultado == "insano":
         sanidade_zerou = True  #o jogo continua mas o player entra num estado insano
