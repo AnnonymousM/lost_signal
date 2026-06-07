@@ -1,10 +1,10 @@
 from estado_yasmin import verificar_estado, limitar_status
 from historico_yasmin import mostrar_historico, registrar_acao
-from decisoes_anna import buscar_agua, buscar_comida, descansar
-from exibicao_anna import mostrar_menu, mostrar_status, mostrar_texto, verificar_final
+from decisoes_anna import buscar_agua, buscar_comida, descansar, exausto
+from exibicao_anna import mostrar_menu, mostrar_status, mostrar_texto, verificar_final, fim_do_dia, exausto_texto
 
 LIMITE_DIAS = 7 #aqui é uma constante que não vai mudar, por isso tá em maiúsculo
-acao_texto = ("Você saiu pra buscar água.", "Você saiu pra buscar comida", "Você tirou o dia pra descansar.")
+acao_texto = ("Você saiu pra buscar água.", "Você saiu pra buscar comida", "Você tirou o dia pra descansar.") #Texto que vai ser armazenado no histórico
 
 estado = {
     "saude": 100,
@@ -18,16 +18,14 @@ fim_de_jogo = False
 historico = []
 indice_dias = 0 #Quantos dias já se passaram 
 sanidade_zerou = False #se a sanidade zerar alguma vez automaticamente é um final ruim
-resultado = ""
+resultado = "" #Guarda o resultado da função que verifica se está vivo/insano/etc
 
-#as coisas que tinham aqui eu coloquei dentro do while já q tem q ficar repetindo
+#Aqui começa o loop
 
 
 while indice_dias < LIMITE_DIAS:
-    mostrar_texto(indice_dias)
-    if indice_dias > 0:
-        mostrar_status(estado)
  
+    mostrar_texto(indice_dias)
     opcao = mostrar_menu(indice_dias)
  
     if opcao == "1":
@@ -52,10 +50,14 @@ while indice_dias < LIMITE_DIAS:
     
     resultado = verificar_estado(estado)
     
-    if resultado == "insano":
+    if resultado == "exausto":
+        exatuso(estado)
+        exausto_texto(resultado)
+
+    elif resultado == "insano":
         sanidade_zerou = True  #o jogo continua mas o player entra num estado insano
  
-    if not vivo:
+    elif resultado == "morto":
         verificar_final(estado, sanidade_zerou, indice_dias)
         mostrar_historico(historico)
         fim_de_jogo = True
@@ -65,21 +67,9 @@ while indice_dias < LIMITE_DIAS:
  
     indice_dias += 1
 
-if fim_de_jogo == False:
+if fim_de_jogo == False:   #aqui é qnd já for os sete dias e ele estiver vivo
  
 
-    #aqui é qnd já for os sete dias e ele estiver vivo
     verificar_final(estado, sanidade_zerou, indice_dias)
     mostrar_historico(historico)
 
-
-limitar_status(estado)
-verificar_estado(estado)
-mostrar_status(estado)
-mostrar_historico(historico)
-buscar_agua(estado)
-buscar_comida(estado)
-descansar(estado)
-mostrar_menu(indice_dias)
-mostrar_status(estado)
-mostrar_texto(indice_dias)
