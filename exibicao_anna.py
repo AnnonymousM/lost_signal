@@ -39,20 +39,16 @@ Zerar saúde, obviamente, leva à morte e sanidade... bem, quem sabe?
 """    #Tutorial do jogo 
 
 
-    fim_do_dia = "Está escurecendo e parece que isso é tudo que você vai fazer por hoje."  #Texto que aparece depois que o jogador faz a escolha
-
-
     if indice_dias == 0: #Condicional pra que a sinopse e o tutorial só apareçam no primeiro ciclo do loop
         print(lore)
         print(tutorial)
 
-    else:
-        print(fim_do_dia)  #Nos demais ciclos, vai exibir o texto de "fim do dia"
 
 
-def verificar_final(estado,sanidade_zerou):   #Recebe o dicionário de estado e a variável pra saber se zerou a sanidade
 
-    textos = {
+def verificar_final(estado,sanidade_zerou, indice_dias):   #Recebe o dicionário de estado e a variável pra saber se zerou a sanidade
+
+    textos_final = {
 
         "morte por saúde":
         "Você se sente muito mal durante a noite; sua barriga dói muito e você está suando frio.\n"
@@ -83,18 +79,26 @@ def verificar_final(estado,sanidade_zerou):   #Recebe o dicionário de estado e 
     } #Dicionário com textos correspondentes a cada tipo de morte e final
 
     if estado["comida"] == 0:
-        print(textos["morte por fome"])             #condicional que exibe o texto de morte por fome caso o estado "comida" chegue a zero
+        print(textos_final["morte por fome"])             #condicional que exibe o texto de morte por fome caso o estado "comida" chegue a zero
 
     if estado["agua"] == 0:
-        print(textos["morte por desidratação"])     #condicional que exibe o texto de morte por desidratação caso o estado "agua" chegue a zero
+        print(textos_final["morte por desidratação"])     #condicional que exibe o texto de morte por desidratação caso o estado "agua" chegue a zero
 
     if estado["saude"] == 0:
-        print(textos["morte por saúde"])            #condicional que exibe o texto de morte por saúde caso o estado "saude" chegue a zero
+        print(textos_final["morte por saúde"])            #condicional que exibe o texto de morte por saúde caso o estado "saude" chegue a zero
 
     if sanidade_zerou == True and indice_dias >= 7: #condicional que exibe o texto de final ruim caso o índice de dias seja igual ou maior que sete e sanidade tenha zerado
-        print(textos["final ruim"])                 
+        print(textos_final["final ruim"])                 
     else:
-        print(textos["final bom"])                   #condicional que exibe o texto de final bom caso nenhum estado chegue a zero antes de 7 ciclos
+        print(textos_final["final bom"])                   #condicional que exibe o texto de final bom caso nenhum estado chegue a zero antes de 7 ciclos
+
+def fim_do_dia(indice_dias):
+    print("Está escurecendo e isso é tudo que você vai fazer por hoje.") #Texto que aparce após o jogador fazer a escolha, serve pra separar um dia do outro
+
+def exausto_texto(resultado):
+    if resultado == "exausto":
+        print("Você esgotou suas energias completamente, e antes mesmo de poder chegar no seu abrigo,"/n
+        "seu corpo colapsa em um descanso forçado.")
 
 
 
