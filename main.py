@@ -49,16 +49,17 @@ while indice_dias < LIMITE_DIAS:
     
     
     resultado = verificar_estado(estado)
+    fim_do_dia(indice_dias)
     
     if resultado == "exausto":
-        exatuso(estado)
+        exausto(estado)
         exausto_texto(resultado)
 
     elif resultado == "insano":
         sanidade_zerou = True  #o jogo continua mas o player entra num estado insano
  
     elif resultado == "morto":
-        verificar_final(estado, sanidade_zerou, indice_dias)
+        verificar_final(estado, sanidade_zerou, indice_dias, estado)
         mostrar_historico(historico)
         fim_de_jogo = True
         break
@@ -72,4 +73,3 @@ if fim_de_jogo == False:   #aqui é qnd já for os sete dias e ele estiver vivo
 
     verificar_final(estado, sanidade_zerou, indice_dias)
     mostrar_historico(historico)
-
