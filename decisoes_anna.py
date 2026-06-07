@@ -24,7 +24,8 @@ def exausto(estado): #Recebe os valores do dicionário (estado)
         estado["agua"] -= 30    #O valor de "agua" diminui em 30
         estado["energia"] += 35 #O valor de "energia" aumenta em 35
         estado["sanidade"] += 5 #O valor de "sanidade" aumenta em 5
-        estado["saúde"] -= 20 #O valor de "saúde" diminui em 20
+        estado["saude"] -= 50 #O valor de "saude" diminui em 50
+    
     
     
 
