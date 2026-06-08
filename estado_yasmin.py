@@ -1,8 +1,6 @@
-#pra verificar as derrotas, qualquer coisa abaixo de 0 é igual derrota (por enquanto como não tem looping, não tem como morrer de sede ou fome, 
-#e nem a questão da sanidade não ser tecnicamente derrota, e sim um final ruim, mas é pra ter uma função pra isso, e aí a gnt pode ir ajustando depois)
-def verificar_estado(estado):
+def verificar_estado(estado): #A função recebe o dicionário dos estados como arg
  
-    if estado["saude"] <= 0:
+    if estado["saude"] <= 0:  #Se o valor das chaves comida, água ou saúde for igual a 0, retorna "morto"
         return "morto"
 
     elif estado["agua"] <= 0:
@@ -11,10 +9,10 @@ def verificar_estado(estado):
     elif estado["comida"] <= 0:
         return "morto"
  
-    elif estado["energia"] <= 0:
+    elif estado["energia"] <= 0:  #Se o valor da chave energia for igual a 0, retorna "exausto"
         return "exausto"
  
-    elif estado["sanidade"] <= 0:
+    elif estado["sanidade"] <= 0: #Se o valor da chave sanidade for igual a 0, retorna "insano"
         return "insano"
  
     return "vivo"
